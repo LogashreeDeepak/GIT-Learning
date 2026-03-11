@@ -1,8 +1,14 @@
 name: First Workflow
+
 on: push
+
 jobs:
-  say-job:
+  hello-job:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Say Hello
-        run: echo "Hello, World!"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Display file
+        run: cat testing.txt
