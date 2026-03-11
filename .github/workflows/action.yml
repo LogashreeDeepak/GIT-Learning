@@ -1,0 +1,14 @@
+name: Read Text File
+
+on: push
+
+jobs:
+  read-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display text file
+        run: cat testing.txt
