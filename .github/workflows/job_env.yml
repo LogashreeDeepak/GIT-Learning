@@ -1,28 +1,20 @@
 name: Job Level Environment Variables
-
-on: push
-
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
-
-    env:
-      ENVIRONMENT: Development
-      APP_NAME: Learning-GitHub-Actions
-
     steps:
-      - name: Print build job variables
-        run: |
-          echo "Application: $APP_NAME"
-          echo "Environment: $ENVIRONMENT"
+      - run: echo "Job1 running"
 
-  test:
+  job2:
+    needs: job1
     runs-on: ubuntu-latest
-
-    env:
-      ENVIRONMENT: Testing
-
     steps:
-      - name: Print test job variables
-        run: |
-          echo "Running tests in $ENVIRONMENT environment"
+      - run: echo "Job2 running"
+
+  job3:
+    needs: job2
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job3 running"
+
+
