@@ -3,7 +3,6 @@ name: Job Level Environment Variables
 on: push
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
