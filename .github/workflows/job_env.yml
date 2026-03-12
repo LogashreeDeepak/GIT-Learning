@@ -1,4 +1,5 @@
 name: Job Level Environment Variables
+on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
