@@ -1,21 +1,15 @@
-name: Job Level Environment Variables
+name: If Condition Demo
+
 on: push
+
 jobs:
-  job1:
+  demo:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Job1 running"
+      - name: Always run
+        run: echo "This step always runs"
 
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Job2 running"
-
-  job3:
-    needs: job2
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Job3 running"
-
-
+      - name: Run only on main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "This runs only on main branch"
