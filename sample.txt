@@ -1,12 +1,3 @@
-my testing file is under progress.
-my testing file 
-my updated file
-i hate git
-deepak 
-Logashree
-DeepakMini
-
-Sample text
-created another sample file
-this is the main file
-this is the og main file 
+Logashree is learning git and github actions.
+Deepak is teaching her important concepts to crack the interview.
+Deepak is very genious and intelligent person(nan solvathellam unmai, unmai thavira verondum illai)
