@@ -2,7 +2,7 @@ name: validate
 on:
   push:
     branches:
-      - main
+      - sample-2
 jobs:
   validate-job:
     runs-on: ubuntu-latest
