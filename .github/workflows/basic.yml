@@ -1,10 +1,11 @@
-name: CI with docker
+name: CI with Docker
+
 on:
   push:
-    branches: ["sample-2"]
+    branches: [ "sample-2" ]
 
 env:
-  IMAGE-NAME: sample-app
+  IMAGE_NAME: sample-app
 
 jobs:
   build:
@@ -13,14 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      -name: Build Docker image
-        run: docker build -t $IMAGE-NAME .
+      - name: Build Docker image
+        run: docker build -t $IMAGE_NAME .
 
-      -name: Docker Login
-        run: docker Login -u ${{ secrets.Docker_Username }} -p ${{ secrets.Docker_Password }}
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      -name: Tag image
-        run: docker tag $IMAGE-NAME ${{ secrets.DockerUsername }}/$IMAGE-NAME:Latest}}
+      - name: Tag image
+        run: docker tag $IMAGE_NAME ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:latest
 
-      -name: Push image
-        run: docker push ${{ secrets.Docker_Username}}/$IMAGE-NAME:Latest}}
+      - name: Push image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:latest
