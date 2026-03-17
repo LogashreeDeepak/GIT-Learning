@@ -1,22 +1,26 @@
-name: validate
+name: CI with docker
 on:
   push:
-    branches:
-      - sample-2
+    branches: ["sample-2"]
+
+env:
+  IMAGE-NAME: sample-app
+
 jobs:
-  validate-job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: check file exists
-        run: |
-          if [ -f "sample.txt" ]; then
-            echo "file exists"
-          else
-            echo "file does not exist"
-            exit 1
-          fi
-        
+      -name: Build Docker image
+        run: docker build -t $IMAGE-NAME .
+
+      -name: Docker Login
+        run: docker Login -u ${{ secrets.Docker_Username }} -p ${{ secrets.Docker_Password }}
+
+      -name: Tag image
+        run: docker tag $IMAGE-NAME ${{ secrets.DockerUsername }}/$IMAGE-NAME:Latest}}
+
+      -name: Push image
+        run: docker push ${{ secrets.Docker_Username}}/$IMAGE-NAME:Latest}}
