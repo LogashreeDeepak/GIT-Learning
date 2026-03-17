@@ -1,15 +1,22 @@
-name: My first pipeline
+name: validate
 on:
   push:
     branches:
       - main
 jobs:
-  test-job:
+  validate-job:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Display file content
-        run: cat sample.txt
+      - name: check file exists
+        run: |
+          if [ -f "sample.txt" ]; then
+            echo "file exists"
+          else
+            echo "file does not exist"
+            exit 1
+          fi
+        
